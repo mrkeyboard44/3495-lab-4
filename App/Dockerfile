@@ -1,9 +1,11 @@
 FROM node:current-slim
 
 # Copy source code to /src in container
-COPY . /src
 
-# Install app and dependencies into /src in container
+RUN apt-get update
+RUN apt install git -y
+RUN git clone https://github.com/mrkeyboard44/3495-lab-4.git
+RUN mv 3495-lab-4/App/ /src
 RUN cd /src; npm install
 
 # Document the port the app listens on
